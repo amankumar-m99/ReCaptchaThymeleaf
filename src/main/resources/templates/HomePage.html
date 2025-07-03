@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>ReCaptcha HomePage</title>
+<script src="https://www.google.com/recaptcha/api.js" async=True defer></script>
+</head>
+
+<body>
+	<h1>This is HomePage of My Thymeleaf for google reCaptcha demo.</h1>
+	<form th:action="@{/save}" method="post" th:object="${backendData}">
+		<table>
+			<tr>
+				<th scope="row">Name</th>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<th scope="row">Age</th>
+				<td><input type="text" th:field="*{age}" /></td>
+			</tr>
+			<tr>
+				<td colspan=2>
+					<div class="g-recaptcha"
+						data-sitekey="6LcVSXUrAAAAAHIp_vCQBpVC0GcZs1W2pvoT0cYI"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2><input type="submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>
