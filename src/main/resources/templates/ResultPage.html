@@ -2,17 +2,66 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Captcha Result</title>
+  <meta charset="ISO-8859-1">
+  <title>Captcha Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .result-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .result-container h1 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .result-container p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .status-success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .status-fail {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 
 <body>
-	<h1>This is result of the submitted captcha demo.</h1>
-	<h1>Captch Status: <span th:text="${captchaStatus}"></span></h1>
-	<h1>Data:</h1>
-	<p>
-		<span th:text="${data}"></span>
-	</p>
+  <div class="result-container">
+    <h1>This is the result of the submitted CAPTCHA demo</h1>
+
+    <h1>
+      CAPTCHA Status:
+      <span th:classappend="${captchaStatus} == 'PASS' ? 'status-success' : 'status-fail'"
+            th:text="${captchaStatus}"></span>
+    </h1>
+
+    <h1>Data:</h1>
+    <p th:text="${data}"></p>
+  </div>
 </body>
 
 </html>

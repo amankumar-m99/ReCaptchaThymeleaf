@@ -2,34 +2,96 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 
 <head>
-<meta charset="ISO-8859-1">
-<title>ReCaptcha HomePage</title>
-<script src="https://www.google.com/recaptcha/api.js" async=True defer></script>
+	<meta charset="UTF-8">
+	<title>Registration Form</title>
+	<script src="https://www.google.com/recaptcha/api.js" async=True defer></script>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.captcha-wrapper {
+			display: flex;
+			justify-content: center;
+		}
+
+		.form-container {
+			background-color: #fff;
+			padding: 20px 30px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			width: 100%;
+			max-width: 400px;
+		}
+
+		.form-container h2 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+
+		.form-group input {
+			width: 100%;
+			padding: 8px;
+			box-sizing: border-box;
+		}
+
+		.form-group button {
+			width: 100%;
+			padding: 10px;
+			background-color: #007BFF;
+			color: white;
+			border: none;
+			font-size: 16px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.form-group button:hover {
+			background-color: #0056b3;
+		}
+	</style>
 </head>
 
 <body>
-	<h1>This is HomePage of My Thymeleaf for google reCaptcha demo.</h1>
-	<form th:action="@{/save}" method="post" th:object="${backendData}">
-		<table>
-			<tr>
-				<th scope="row">Name</th>
-				<td><input type="text" th:field="*{name}" /></td>
-			</tr>
-			<tr>
-				<th scope="row">Age</th>
-				<td><input type="text" th:field="*{age}" /></td>
-			</tr>
-			<tr>
-				<td colspan=2>
-					<div class="g-recaptcha"
-						data-sitekey="6LcVSXUrAAAAAHIp_vCQBpVC0GcZs1W2pvoT0cYI"></div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan=2><input type="submit" /></td>
-			</tr>
-		</table>
-	</form>
+	<div class="form-container">
+		<h2>Google reCaptcha demo</h2>
+		<form th:action="@{/save}" method="post" th:object="${backendData}">
+			<div class="form-group">
+				<label for="fullname">Full Name</label>
+				<input type="text" placeholder="Naam ka hai tumhara" th:field="*{name}" required />
+			</div>
+
+			<div class="form-group">
+				<label for="email">Age</label>
+				<input type="number" placeholder="Umar kitna ho gya tumhara" th:field="*{age}" required />
+			</div>
+
+			<div class="form-group captcha-wrapper">
+				<div class="g-recaptcha" data-sitekey="6LcVSXUrAAAAAHIp_vCQBpVC0GcZs1W2pvoT0cYI"></div>
+			</div>
+
+
+			<div class="form-group">
+				<button type="submit">Register</button>
+			</div>
+		</form>
+	</div>
 </body>
 
 </html>
